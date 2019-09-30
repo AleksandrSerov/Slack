@@ -1,5 +1,5 @@
 {
-  "name": "frontend_l4_chat_project",
+  "name": "frontend-project-lvl-4",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -20,12 +20,12 @@
     "type": "git",
     "url": "git@bitbucket.org:hexlet/frontend_l4_chat_project.git"
   },
-  "author": "Kirill Mokevnin",
+  "author": "Aleksandr Serov",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "git+https://github.com/AleksandrSerov/frontend-project-lvl4.git"
   },
-  "homepage": "",
+  "homepage": "https://github.com/AleksandrSerov/frontend-project-lvl4#readme",
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
