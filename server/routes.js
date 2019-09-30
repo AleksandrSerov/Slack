@@ -23,7 +23,11 @@ export default (router, io) => {
       ctx.body = state.channels;
     })
     .post('/channels', (ctx) => {
-      const { data: { attributes: { name } } } = ctx.request.body;
+      const {
+        data: {
+          attributes: { name },
+        },
+      } = ctx.request.body;
       const channel = {
         name,
         removable: true,
@@ -44,8 +48,8 @@ export default (router, io) => {
     })
     .delete('/channels/:id', (ctx) => {
       const channelId = Number(ctx.params.id);
-      state.channels = state.channels.filter(c => c.id !== channelId);
-      state.messages = state.messages.filter(m => m.channelId !== channelId);
+      state.channels = state.channels.filter((c) => c.id !== channelId);
+      state.messages = state.messages.filter((m) => m.channelId !== channelId);
       ctx.status = 204;
       const data = {
         data: {
@@ -57,7 +61,7 @@ export default (router, io) => {
     })
     .patch('/channels/:id', (ctx) => {
       const channelId = Number(ctx.params.id);
-      const channel = state.channels.find(c => c.id === channelId);
+      const channel = state.channels.find((c) => c.id === channelId);
 
       const { attributes } = ctx.request.body.data;
       channel.name = attributes.name;
@@ -72,8 +76,10 @@ export default (router, io) => {
       io.emit('renameChannel', data);
     })
     .get('/channels/:channelId/messages', (ctx) => {
-      const messages = state.messages.filter(m => m.channelId === Number(ctx.params.channelId));
-      const resources = messages.map(m => ({
+      const messages = state.messages.filter(
+        (m) => m.channelId === Number(ctx.params.channelId),
+      );
+      const resources = messages.map((m) => ({
         type: 'messages',
         id: m.id,
         attributes: m,
@@ -81,7 +87,9 @@ export default (router, io) => {
       ctx.body = resources;
     })
     .post('/channels/:channelId/messages', (ctx) => {
-      const { data: { attributes } } = ctx.request.body;
+      const {
+        data: { attributes },
+      } = ctx.request.body;
       const message = {
         ...attributes,
         channelId: Number(ctx.params.channelId),
