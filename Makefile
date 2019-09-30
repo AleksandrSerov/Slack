@@ -11,7 +11,10 @@ build:
 	npm run build
 
 test:
-	npm test
+	npm test -- --coverage
+	
+watch:
+	npm test -- --watch
 
 check-types:
 	npx flow
