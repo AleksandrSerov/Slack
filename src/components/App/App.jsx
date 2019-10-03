@@ -4,15 +4,17 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Container, Row, Col } from 'react-bootstrap';
 import Channels from '../Channels/Channels';
+import Chat from '../Chat/Chat';
 import rootReducer from '../../reducers';
+
+const initState = window.gon;
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   rootReducer,
+  initState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 /* eslint-enable */
-
-const Chat = () => <div>hello world1</div>;
 
 export default () => {
   ReactDOM.render(
@@ -22,7 +24,7 @@ export default () => {
           <Col xs={3}>
             <Channels />
           </Col>
-          <Col>
+          <Col style={{ height: '100vh' }}>
             <Chat />
           </Col>
         </Row>
