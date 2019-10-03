@@ -1,8 +1,6 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
-  entry: ['babel-polyfill', `${__dirname}/src/index.js`],
+  entry: [`${__dirname}/src/index.js`],
   externals: {
     gon: 'gon',
   },
@@ -16,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
@@ -24,23 +22,6 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-          },
-        ],
-      },
     ],
   },
-  devServer: {
-    contentBase: './dist',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './template.html',
-      filename: './index.html',
-    }),
-  ],
 };
