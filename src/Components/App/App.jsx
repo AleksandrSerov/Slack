@@ -4,5 +4,5 @@ import ReactDOM from 'react-dom';
 const App = () => <div>hello world</div>;
 
 export default () => {
-  ReactDOM.render(<App />, document.getElementById('chat'));
+  ReactDOM.render(<App />, document.getElementById('app'));
 };
