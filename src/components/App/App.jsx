@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Container, Row, Col } from 'react-bootstrap';
+import thunk from 'redux-thunk';
 import Channels from '../Channels/Channels';
 import Chat from '../Chat/Chat';
 import rootReducer from '../../reducers';
@@ -12,7 +13,11 @@ const initState = window.gon;
 const store = createStore(
   rootReducer,
   initState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ),
 );
 /* eslint-enable */
 

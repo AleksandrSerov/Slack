@@ -28,9 +28,9 @@ class Channels extends Component {
   };
 
   handleChannelClick = (id) => () => {
-    const { setCurrentChannelId } = this.props;
+    const { actions } = this.props;
 
-    setCurrentChannelId({ id });
+    actions.setCurrentChannelId({ id });
   };
 
   render() {

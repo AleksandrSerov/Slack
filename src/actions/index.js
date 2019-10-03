@@ -1,5 +1,7 @@
-import { createAction } from 'redux-actions';
+import * as sync from './sync';
+import * as async from './async';
 
-export const setInitialState = createAction('INITIAL_STATE/SET');
-
-export const setCurrentChannelId = createAction('CURRENT_CHANNEL_ID/SET');
+export default {
+  ...sync,
+  ...async,
+};
