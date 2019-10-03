@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import connect from '../../connect';
 
+@connect((state) => ({
+  channels: state.channels,
+  currentChannelId: state.currentChannelId,
+}))
 class Channels extends Component {
   renderChannels = () => {
-    const { channels } = this.props;
+    const { channels, currentChannelId } = this.props;
 
     const isEmptyChannels = !channels.length;
     if (isEmptyChannels) {
@@ -12,18 +16,26 @@ class Channels extends Component {
     }
 
     return channels.map(({ name, id }) => (
-      <ListGroup.Item key={id}>{name}</ListGroup.Item>
+      <ListGroup.Item
+        action
+        key={id}
+        active={id === currentChannelId}
+        onClick={this.handleChannelClick(id)}
+      >
+        {name}
+      </ListGroup.Item>
     ));
+  };
+
+  handleChannelClick = (id) => () => {
+    const { setCurrentChannelId } = this.props;
+
+    setCurrentChannelId({ id });
   };
 
   render() {
     return <ListGroup>{this.renderChannels()}</ListGroup>;
   }
 }
-const mapStateToProps = (state) => {
-  const props = {
-    channels: state.channels,
-  };
-  return props;
-};
-export default connect(mapStateToProps)(Channels);
+
+export default Channels;
