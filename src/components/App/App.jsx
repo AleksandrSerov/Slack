@@ -7,8 +7,9 @@ import thunk from 'redux-thunk';
 import Channels from '../Channels/Channels';
 import Chat from '../Chat/Chat';
 import rootReducer from '../../reducers';
+import convertInitialState from './_helpers';
 
-const initState = window.gon;
+const initState = convertInitialState(window.gon);
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   rootReducer,

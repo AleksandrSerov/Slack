@@ -3,13 +3,12 @@ import { ListGroup } from 'react-bootstrap';
 import connect from '../../connect';
 
 @connect((state) => ({
-  channels: state.channels,
+  channels: state.channels.allIds.map((id) => state.channels.byId[id]),
   currentChannelId: state.currentChannelId,
 }))
 class Channels extends Component {
   renderChannels = () => {
     const { channels, currentChannelId } = this.props;
-
     const isEmptyChannels = !channels.length;
     if (isEmptyChannels) {
       return null;
