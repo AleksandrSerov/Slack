@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import connect from '../../../connect';
+import UsernameContext from '../../../UsernameContext';
 
 @connect(() => ({}))
 class ChatMessageForm extends Component {
+  static contextType = UsernameContext;
+
   handleSubmit = (data) => {
     const { text } = data;
     const { actions, reset } = this.props;
+    const { username } = this.context;
 
-    actions.sendMessage({ text });
+    actions.sendMessage({ text, username });
     reset();
   };
 
