@@ -2,15 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { Container, Row, Col } from 'react-bootstrap';
 import thunk from 'redux-thunk';
 import Cookies from 'js-cookie';
 import faker from 'faker';
-import Channels from '../Channels/Channels';
-import Chat from '../Chat/Chat';
 import rootReducer from '../../reducers';
-import convertInitialState from './_helpers';
 import UsernameContext from '../../UsernameContext';
+import Slack from '../Slack/Slack';
+import convertInitialState from './_helpers';
 
 const initState = convertInitialState(window.gon);
 const isUsernameExist = Boolean(Cookies.get('username'));
@@ -36,16 +34,7 @@ export default () => {
   ReactDOM.render(
     <Provider store={store}>
       <UsernameContext.Provider value={{ username }}>
-        <Container fluid>
-          <Row>
-            <Col xs={3}>
-              <Channels />
-            </Col>
-            <Col style={{ height: '100vh' }}>
-              <Chat />
-            </Col>
-          </Row>
-        </Container>
+        <Slack />
       </UsernameContext.Provider>
     </Provider>,
     document.getElementById('app'),

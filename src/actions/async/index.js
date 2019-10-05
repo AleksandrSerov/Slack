@@ -17,7 +17,7 @@ export const sendMessage = (data) => async (dispatch, getState) => {
     );
     const { attributes } = response.data.data;
     dispatch(actions.sendMessageSuccess());
-    dispatch(actions.addMessage({ attributes }));
+    // dispatch(actions.addMessage({ attributes }));
   } catch (error) {
     dispatch(actions.sendMessageFailure());
   }
