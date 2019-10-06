@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import io from 'socket.io-client';
-import Channels from '../Channels/Channels';
-import Chat from '../Chat/Chat';
-import connect from '../../connect';
+import Channels from './Channels';
+import Chat from './Chat';
+import connect from '../../../connect';
 
 @connect(() => ({}))
 class Slack extends Component {

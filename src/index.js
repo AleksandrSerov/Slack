@@ -1,4 +1,4 @@
-import getApp from './components/App/App';
+import getApp from './components/App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/application.css';

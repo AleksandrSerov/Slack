@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import connect from '../../connect';
+import connect from '../../../../connect';
 
 @connect((state) => ({
   channels: state.channels.allIds.map((id) => state.channels.byId[id]),

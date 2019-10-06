@@ -1,4 +1,7 @@
-export default (state) => {
+import Cookies from 'js-cookie';
+import faker from 'faker';
+
+export const convertInitialState = (state) => {
   const messages = {
     allIds: state.messages.map((message) => message.id),
     byId: state.messages.reduce(
@@ -26,4 +29,16 @@ export default (state) => {
     channels,
     currentChannelId: state.currentChannelId,
   };
+};
+
+export const getUsername = () => {
+  const isUsernameExist = Boolean(Cookies.get('username'));
+
+  if (!isUsernameExist) {
+    const randomName = faker.name.findName();
+    Cookies.set('username', randomName);
+  }
+  const username = Cookies.get('username');
+
+  return username;
 };

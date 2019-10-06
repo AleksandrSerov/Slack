@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import connect from '../../../connect';
-import UsernameContext from '../../../UsernameContext';
+import connect from '../../../../../connect';
+import UsernameContext from '../../../../../UsernameContext';
 
 @connect(() => ({}))
 class ChatMessageForm extends Component {
