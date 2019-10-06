@@ -12,7 +12,7 @@ class ChatMessageForm extends Component {
     const { actions, reset } = this.props;
     const { username } = this.context;
 
-    actions.sendMessage({ text, username });
+    actions.sendMessage({ text: String(text), username });
     reset();
   };
 
