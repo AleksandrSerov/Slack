@@ -7,17 +7,12 @@ export const sendMessage = (data) => async (dispatch, getState) => {
   const { currentChannelId } = getState();
   dispatch(actions.sendMessageRequest());
   try {
-    const response = await axios.post(
-      routes.channelMessagesPath(currentChannelId),
-      {
-        data: {
-          attributes: data,
-        },
+    await axios.post(routes.channelMessagesPath(currentChannelId), {
+      data: {
+        attributes: data,
       },
-    );
-    const { attributes } = response.data.data;
+    });
     dispatch(actions.sendMessageSuccess());
-    // dispatch(actions.addMessage({ attributes }));
   } catch (error) {
     dispatch(actions.sendMessageFailure());
   }
