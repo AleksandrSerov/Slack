@@ -15,5 +15,6 @@ export const sendMessage = (data) => async (dispatch, getState) => {
     dispatch(actions.sendMessageSuccess());
   } catch (error) {
     dispatch(actions.sendMessageFailure());
+    throw error;
   }
 };

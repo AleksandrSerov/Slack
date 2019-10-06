@@ -3,21 +3,25 @@ import { Field, reduxForm } from 'redux-form';
 import connect from '../../../../../connect';
 import UsernameContext from '../../../../../UsernameContext';
 
-@connect(() => ({}))
+@connect()
 class ChatMessageForm extends Component {
   static contextType = UsernameContext;
 
-  handleSubmit = (data) => {
+  handleSubmit = async (data) => {
     const { text } = data;
     const { actions, reset } = this.props;
     const { username } = this.context;
-
-    actions.sendMessage({ text: String(text), username });
+    try {
+      await actions.sendMessage({ text: String(text), username });
+    } catch (error) {
+      throw error;
+    }
     reset();
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitting, pristine } = this.props;
+
     return (
       <form
         className="form-inline col"
@@ -36,10 +40,11 @@ class ChatMessageForm extends Component {
           />
           <button
             className="btn btn-primary border-left-0"
-            id="searchButton"
+            id="sendButton"
             type="submit"
+            disabled={pristine || submitting}
           >
-            Read
+            {submitting ? 'Sending...' : 'Send'}
           </button>
         </div>
       </form>

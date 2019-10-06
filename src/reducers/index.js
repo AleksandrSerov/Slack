@@ -15,9 +15,25 @@ export const currentChannelId = handleActions(
   null,
 );
 
+export const sendMessageState = handleActions(
+  {
+    [actions.sendMessageRequest](state, { payload }) {
+      return 'request';
+    },
+    [actions.sendMessageSuccess](state, { payload }) {
+      return 'success';
+    },
+    [actions.sendMessageFailure](state, { payload }) {
+      return 'failure';
+    },
+  },
+  'none',
+);
+
 export default combineReducers({
   channels,
   messages,
   currentChannelId,
+  sendMessageState,
   form: formReducer,
 });
