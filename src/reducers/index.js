@@ -30,10 +30,26 @@ export const sendMessageState = handleActions(
   'none',
 );
 
+export const createChannelState = handleActions(
+  {
+    [actions.createChannelRequest](state, { payload }) {
+      return 'request';
+    },
+    [actions.createChannelSuccess](state, { payload }) {
+      return 'success';
+    },
+    [actions.createChannelFailure](state, { payload }) {
+      return 'failure';
+    },
+  },
+  'none',
+);
+
 export default combineReducers({
   channels,
   messages,
   currentChannelId,
   sendMessageState,
+  createChannelState,
   form: formReducer,
 });

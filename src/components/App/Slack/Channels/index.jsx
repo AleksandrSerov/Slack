@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
+import ChannelForm from './ChannelForm';
 import connect from '../../../../connect';
 
 @connect((state) => ({
@@ -14,14 +15,25 @@ class Channels extends Component {
       return null;
     }
 
-    return channels.map(({ name, id }) => (
+    return channels.map(({ name, id, removable }) => (
       <ListGroup.Item
         action
         key={id}
         active={id === currentChannelId}
         onClick={this.handleChannelClick(id)}
+        as="div"
       >
-        {name}
+        <span>{`#${name}`}</span>
+        {removable && (
+          <>
+            <button type="button" className="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <button type="button" className="close" aria-label="Edit">
+              <span aria-hidden="true">&#9998;</span>
+            </button>
+          </>
+        )}
       </ListGroup.Item>
     ));
   };
@@ -33,7 +45,12 @@ class Channels extends Component {
   };
 
   render() {
-    return <ListGroup>{this.renderChannels()}</ListGroup>;
+    return (
+      <>
+        <ChannelForm />
+        <ListGroup>{this.renderChannels()}</ListGroup>
+      </>
+    );
   }
 }
 
