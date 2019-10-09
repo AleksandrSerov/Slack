@@ -16,6 +16,13 @@ class Channels extends Component {
     actions.setRemovingChannelId({ id });
   };
 
+  handleRenameChannelButtonClick = (id) => (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const { actions } = this.props;
+    actions.setRenamingChannelId({ id });
+  };
+
   handleSetCurrentChannelButtonClick = (id) => (e) => {
     e.preventDefault();
     const { actions } = this.props;
@@ -48,7 +55,12 @@ class Channels extends Component {
             >
               <span aria-hidden="true">&times;</span>
             </button>
-            <button type="button" className="close" aria-label="Edit">
+            <button
+              type="button"
+              className="close"
+              aria-label="Rename"
+              onClick={this.handleRenameChannelButtonClick(id)}
+            >
               <span aria-hidden="true">&#9998;</span>
             </button>
           </>
