@@ -3,15 +3,23 @@ import { ListGroup } from 'react-bootstrap';
 import ChannelForm from './ChannelForm';
 import connect from '../../../../connect';
 
-@connect((state) => ({
+const mapStateToProps = (state) => ({
   channels: state.channels.allIds.map((id) => state.channels.byId[id]),
   currentChannelId: state.currentChannelId,
-}))
+});
+@connect(mapStateToProps)
 class Channels extends Component {
-  handleRemoveChannel = () => {
+  handleRemoveChannelButtonClick = (id) => (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const { actions } = this.props;
+    actions.setRemovingChannelId({ id });
+  };
 
-    actions.openRemoveChannelModal();
+  handleSetCurrentChannelButtonClick = (id) => (e) => {
+    e.preventDefault();
+    const { actions } = this.props;
+    actions.setCurrentChannelId({ id });
   };
 
   renderChannels = () => {
@@ -26,7 +34,7 @@ class Channels extends Component {
         action
         key={id}
         active={id === currentChannelId}
-        onClick={this.handleChannelClick(id)}
+        onClick={this.handleSetCurrentChannelButtonClick(id)}
         as="div"
       >
         <span>{`#${name}`}</span>
@@ -36,7 +44,7 @@ class Channels extends Component {
               type="button"
               className="close"
               aria-label="Close"
-              onClick={this.handleRemoveChannel}
+              onClick={this.handleRemoveChannelButtonClick(id)}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -47,12 +55,6 @@ class Channels extends Component {
         )}
       </ListGroup.Item>
     ));
-  };
-
-  handleChannelClick = (id) => () => {
-    const { actions } = this.props;
-
-    actions.setCurrentChannelId({ id });
   };
 
   render() {

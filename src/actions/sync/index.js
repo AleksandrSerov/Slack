@@ -22,3 +22,8 @@ export const removeChannelRequest = createAction('CHANNEL_REMOVE/REQUEST');
 export const removeChannelSuccess = createAction('CHANNEL_REMOVE/SUCCESS');
 export const removeChannelFailure = createAction('CHANNEL_REMOVE/FAILURE');
 export const removeChannel = createAction('CHANNEL/REMOVE');
+
+export const setRemovingChannelId = createAction('REMOVING_CHANNEL_ID/SET');
+export const clearRemovingChannelId = createAction('REMOVING_CHANNEL_ID/CLEAR');
+
+export const removeChannelFromStore = createAction('CHANNEL/REMOVE');

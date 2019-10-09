@@ -4,10 +4,10 @@ import actions from '../../../actions';
 
 const isShow = handleActions(
   {
-    [actions.openRemoveChannelModal](state, { payload }) {
+    [actions.setRemovingChannelId](state, { payload }) {
       return true;
     },
-    [actions.closeRemoveChannelModal](state, { payload }) {
+    [actions.clearRemovingChannelId](state, { payload }) {
       return false;
     },
   },

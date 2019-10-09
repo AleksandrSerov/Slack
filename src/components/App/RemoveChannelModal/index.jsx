@@ -5,23 +5,26 @@ import connect from '../../../connect';
 const mapStatetoProps = (state) => {
   const props = {
     isShowModal: state.modals.removeChannel.isShow,
+    removingChannelId: state.removingChannelId,
   };
   return props;
 };
 @connect(mapStatetoProps)
 class RemoveChannelModal extends Component {
   handleRemoveChannel = async () => {
-    const { actions } = this.props;
+    const { actions, removingChannelId } = this.props;
     try {
-      await actions.removeChannel();
-    } catch (error) {}
-    actions.closeRemoveChannelModal();
+      await actions.removeChannel({ id: removingChannelId });
+    } catch (error) {
+      console.error(error);
+    }
+    actions.clearRemovingChannelId();
   };
 
   handleClose = () => {
     const { actions } = this.props;
 
-    actions.closeRemoveChannelModal();
+    actions.clearRemovingChannelId();
   };
 
   render() {

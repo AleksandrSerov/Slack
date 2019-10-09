@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
+import _ from 'lodash';
 import actions from '../../actions';
 
 const byId = handleActions(

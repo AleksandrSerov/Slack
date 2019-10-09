@@ -5,14 +5,27 @@ import Channels from './Channels';
 import Chat from './Chat';
 import connect from '../../../connect';
 
-@connect(() => ({}))
+@connect((state) => ({
+  currentChannelId: state.currentChannelId,
+  channels: state.channels,
+}))
 class Slack extends Component {
   componentDidMount() {
+    const { actions, currentChannelId, channels } = this.props;
     const socket = io();
     socket.on('newMessage', ({ data }) => {
-      const { actions } = this.props;
       const { attributes } = data;
       actions.addMessage({ attributes });
+    });
+    socket.on('removeChannel', ({ data }) => {
+      const { id } = data;
+      actions.removeChannelFromStore({ id });
+      if (currentChannelId === id) {
+        const [newCurrentChannelId] = channels.allIds;
+        actions.setCurrentChannelId({
+          id: newCurrentChannelId,
+        });
+      }
     });
   }
 
