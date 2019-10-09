@@ -5,10 +5,11 @@ import Channels from './Channels';
 import Chat from './Chat';
 import connect from '../../../connect';
 
-@connect((state) => ({
+const mapStateToProps = (state) => ({
   currentChannelId: state.currentChannelId,
   channels: state.channels,
-}))
+});
+@connect(mapStateToProps)
 class Slack extends Component {
   componentDidMount() {
     const { actions, currentChannelId, channels } = this.props;
