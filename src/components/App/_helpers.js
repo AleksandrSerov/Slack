@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import faker from 'faker';
 
 export const convertInitialState = (state) => {
+  const { currentChannelId } = state;
   const messages = {
     allIds: state.messages.map((message) => message.id),
     byId: state.messages.reduce(
@@ -27,7 +28,7 @@ export const convertInitialState = (state) => {
   return {
     messages,
     channels,
-    currentChannelId: state.currentChannelId,
+    currentChannelId,
   };
 };
 
