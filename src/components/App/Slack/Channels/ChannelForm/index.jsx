@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, Button, FormControl, Form } from 'react-bootstrap';
+import { InputGroup, Button, Form } from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
 
 import connect from '../../../../../connect';
