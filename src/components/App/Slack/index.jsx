@@ -17,6 +17,10 @@ class Slack extends Component {
       const { attributes } = data;
       actions.addMessage({ attributes });
     });
+    socket.on('newChannel', ({ data }) => {
+      const { attributes } = data;
+      actions.addChannel({ attributes });
+    });
     socket.on('removeChannel', ({ data }) => {
       const { id } = data;
       actions.removeChannelFromStore({ id });

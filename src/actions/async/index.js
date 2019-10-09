@@ -21,20 +21,14 @@ export const sendMessage = (data) => async (dispatch, getState) => {
 export const createChannel = ({ name }) => async (dispatch, getState) => {
   dispatch(actions.createChannelRequest());
   try {
-    const response = await axios.post(routes.channelPath(), {
+    await axios.post(routes.channelPath(), {
       data: {
         attributes: {
           name,
         },
       },
     });
-    const {
-      data: {
-        data: { attributes },
-      },
-    } = response;
     dispatch(actions.createChannelSuccess());
-    dispatch(actions.addChannel({ attributes }));
   } catch (error) {
     dispatch(actions.createChannelFailure());
     throw error;
