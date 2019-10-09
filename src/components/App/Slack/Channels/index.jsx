@@ -8,6 +8,12 @@ import connect from '../../../../connect';
   currentChannelId: state.currentChannelId,
 }))
 class Channels extends Component {
+  handleRemoveChannel = () => {
+    const { actions } = this.props;
+
+    actions.openRemoveChannelModal();
+  };
+
   renderChannels = () => {
     const { channels, currentChannelId } = this.props;
     const isEmptyChannels = !channels.length;
@@ -26,7 +32,12 @@ class Channels extends Component {
         <span>{`#${name}`}</span>
         {removable && (
           <>
-            <button type="button" className="close" aria-label="Close">
+            <button
+              type="button"
+              className="close"
+              aria-label="Close"
+              onClick={this.handleRemoveChannel}
+            >
               <span aria-hidden="true">&times;</span>
             </button>
             <button type="button" className="close" aria-label="Edit">

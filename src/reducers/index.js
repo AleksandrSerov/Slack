@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import { reducer as formReducer } from 'redux-form';
 
+import actions from '../actions';
 import messages from './messages';
 import channels from './channels';
-import actions from '../actions';
+import modals from './modals';
 
 export const currentChannelId = handleActions(
   {
@@ -51,5 +52,6 @@ export default combineReducers({
   currentChannelId,
   sendMessageState,
   createChannelState,
+  modals,
   form: formReducer,
 });

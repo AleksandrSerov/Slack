@@ -12,3 +12,13 @@ export const createChannelRequest = createAction('CHANNEL_CREATE/REQUEST');
 export const createChannelSuccess = createAction('CHANNEL_CREATE/SUCCESS');
 export const createChannelFailure = createAction('CHANNEL_CREATE/FAILURE');
 export const addChannel = createAction('CHANNEL/ADD');
+
+export const openRemoveChannelModal = createAction('REMOVE_CHANNEL_MODAL/OPEN');
+export const closeRemoveChannelModal = createAction(
+  'REMOVE_CHANNEL_MODAL/CLOSE',
+);
+
+export const removeChannelRequest = createAction('CHANNEL_REMOVE/REQUEST');
+export const removeChannelSuccess = createAction('CHANNEL_REMOVE/SUCCESS');
+export const removeChannelFailure = createAction('CHANNEL_REMOVE/FAILURE');
+export const removeChannel = createAction('CHANNEL/REMOVE');

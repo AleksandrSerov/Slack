@@ -40,3 +40,26 @@ export const createChannel = ({ name }) => async (dispatch, getState) => {
     throw error;
   }
 };
+
+export const removeChannel = ({ id }) => async (dispatch, getState) => {
+  dispatch(actions.removeChannelRequest());
+  try {
+    const response = await axios.post(routes.channelPath(), {
+      data: {
+        attributes: {
+          id,
+        },
+      },
+    });
+    const {
+      data: {
+        data: { attributes },
+      },
+    } = response;
+    dispatch(actions.removeChannelSuccess());
+    dispatch(actions.addChannel({ attributes }));
+  } catch (error) {
+    dispatch(actions.removeChannelFailure());
+    throw error;
+  }
+};

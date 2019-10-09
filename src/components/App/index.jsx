@@ -7,6 +7,7 @@ import rootReducer from '../../reducers';
 import UsernameContext from '../../UsernameContext';
 import Slack from './Slack';
 import { convertInitialState, getUsername } from './_helpers';
+import RemoveChannelModal from './RemoveChannelModal';
 
 const initState = convertInitialState(window.gon);
 const username = getUsername();
@@ -28,6 +29,8 @@ export default () => {
     <Provider store={store}>
       <UsernameContext.Provider value={{ username }}>
         <Slack />
+        <RemoveChannelModal />
+        {/* <EditChannelModal/> */}
       </UsernameContext.Provider>
     </Provider>,
     document.getElementById('app'),
