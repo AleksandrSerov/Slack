@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { InputGroup, Button, Form } from 'react-bootstrap';
-import { Field, reduxForm } from 'redux-form';
-
+import { Field } from 'redux-form';
+import withReduxForm from '../../../../../reduxForm';
 import connect from '../../../../../connect';
 
 @connect()
+@withReduxForm('ChannelForm')
 class ChannelForm extends Component {
   handleSubmit = async (data) => {
     const { name } = data;
@@ -38,6 +39,4 @@ class ChannelForm extends Component {
   }
 }
 
-export default reduxForm({
-  form: 'ChannelForm',
-})(ChannelForm);
+export default ChannelForm;

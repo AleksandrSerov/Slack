@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import connect from '../../../connect';
+import withReduxForm from '../../../reduxForm';
 
 const mapStatetoProps = (state) => {
   const props = {
@@ -10,6 +11,7 @@ const mapStatetoProps = (state) => {
   return props;
 };
 @connect(mapStatetoProps)
+@withReduxForm('RenameChannel')
 class RenameChannelModal extends Component {
   handleRenameChannel = async (data) => {
     const { actions, renameChannelId } = this.props;

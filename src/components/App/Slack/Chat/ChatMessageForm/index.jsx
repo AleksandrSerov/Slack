@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import connect from '../../../../../connect';
+import withReduxForm from '../../../../../reduxForm';
 import UsernameContext from '../../../../../UsernameContext';
 
 @connect()
+@withReduxForm('ChatMessage')
 class ChatMessageForm extends Component {
   static contextType = UsernameContext;
 
@@ -52,6 +54,4 @@ class ChatMessageForm extends Component {
   }
 }
 
-export default reduxForm({
-  form: 'ChatMessage',
-})(ChatMessageForm);
+export default ChatMessageForm;
