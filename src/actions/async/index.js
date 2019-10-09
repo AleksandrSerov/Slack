@@ -51,3 +51,20 @@ export const removeChannel = ({ id }) => async (dispatch, getState) => {
     throw error;
   }
 };
+
+export const renameChannel = ({ id, name }) => async (dispatch, getState) => {
+  dispatch(actions.renameChannelRequest());
+  try {
+    await axios.patch(routes.channelPath(id), {
+      data: {
+        attributes: {
+          name,
+        },
+      },
+    });
+    dispatch(actions.renameChannelSuccess());
+  } catch (error) {
+    dispatch(actions.renameChannelFailure());
+    throw error;
+  }
+};

@@ -17,6 +17,18 @@ const byId = handleActions(
       const { id } = payload;
       return _.omit(state, id);
     },
+    [actions.updateChannel](state, { payload }) {
+      const { id, name } = payload.attributes;
+      const updatedChannel = {
+        ...state[id],
+        name,
+      };
+
+      return {
+        ...state,
+        [id]: updatedChannel,
+      };
+    },
   },
   {},
 );

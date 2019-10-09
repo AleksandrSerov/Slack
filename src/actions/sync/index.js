@@ -31,3 +31,5 @@ export const renameChannelFailure = createAction('CHANNEL_RENAME/FAILURE');
 export const clearRenamingChannelId = createAction('RENAME_CHANNEL_ID/CLEAR');
 export const setRenamingChannelId = createAction('RENAME_CHANNEL_ID/SET');
 export const renameChannelFromStore = createAction('CHANNEL/RENAME');
+
+export const updateChannel = createAction('CHANNEL/UPDATE');

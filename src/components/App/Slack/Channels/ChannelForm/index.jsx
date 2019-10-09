@@ -31,7 +31,7 @@ class ChannelForm extends Component {
         <InputGroup>
           <Field required name="name" component="input" type="text" />
           <InputGroup.Append>
-            <Button>Add channel</Button>
+            <Button type="submit">Add channel</Button>
           </InputGroup.Append>
         </InputGroup>
       </Form>

@@ -58,11 +58,24 @@ const removingChannelId = handleActions(
   null,
 );
 
+const renamingChannelId = handleActions(
+  {
+    [actions.setRenamingChannelId](state, { payload }) {
+      return payload.id;
+    },
+    [actions.clearRenamingChannelId](state, { payload }) {
+      return null;
+    },
+  },
+  null,
+);
+
 export default combineReducers({
   channels,
   messages,
   currentChannelId,
   removingChannelId,
+  renamingChannelId,
   sendMessageState,
   createChannelState,
   modals,

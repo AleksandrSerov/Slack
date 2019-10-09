@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { Field } from 'redux-form';
 import connect from '../../../connect';
 import withReduxForm from '../../../reduxForm';
 
 const mapStatetoProps = (state) => {
   const props = {
     isShowModal: state.modals.renameChannel.isShow,
-    renameChannelId: state.renameChannelId,
+    renameChannelId: state.renamingChannelId,
   };
   return props;
 };
@@ -17,7 +18,7 @@ class RenameChannelModal extends Component {
     const { actions, renameChannelId } = this.props;
     const { name } = data;
     try {
-      await actions.removeChannel({ id: renameChannelId, name });
+      await actions.renameChannel({ id: renameChannelId, name });
     } catch (error) {
       console.error(error);
     }
@@ -31,21 +32,41 @@ class RenameChannelModal extends Component {
   };
 
   render() {
-    const { isShowModal } = this.props;
+    const { isShowModal, handleSubmit } = this.props;
+
     return (
       <Modal show={isShowModal} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Rename channel</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are your sure rename channel?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={this.handleRenameChannel}>
-            Rename channel
-          </Button>
-        </Modal.Footer>
+        <form
+          id="renameChannel"
+          onSubmit={handleSubmit(this.handleRenameChannel)}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Rename channel</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are your sure rename channel?
+            <Field
+              name="name"
+              required
+              component="input"
+              type="text"
+              className="form-control"
+              placeholder="Enter new channel name"
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              onClick={this.handleRenameChannel}
+              type="submit"
+            >
+              Rename channel
+            </Button>
+          </Modal.Footer>
+        </form>
       </Modal>
     );
   }

@@ -32,6 +32,11 @@ class Slack extends Component {
         });
       }
     });
+    socket.on('renameChannel', ({ data }) => {
+      const { attributes } = data;
+
+      actions.updateChannel({ attributes });
+    });
   }
 
   render() {
