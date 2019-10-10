@@ -19,19 +19,27 @@ class ChannelForm extends Component {
   };
 
   render() {
-    const { handleSubmit } = this.props;
-
+    const { handleSubmit, submitting, pristine } = this.props;
     return (
       <Form
         id="channelForm"
         onSubmit={handleSubmit(this.handleSubmit)}
-        className="mb-3"
+        className="mb-3 mt-3"
         inline
       >
         <InputGroup>
-          <Field required name="name" component="input" type="text" />
+          <Field
+            required
+            name="name"
+            component="input"
+            type="text"
+            className="form-control border-right-0"
+            placeholder="Enter channel name"
+          />
           <InputGroup.Append>
-            <Button type="submit">Add channel</Button>
+            <Button type="submit" disabled={pristine || submitting}>
+              {submitting ? 'Adding...' : 'Add'}
+            </Button>
           </InputGroup.Append>
         </InputGroup>
       </Form>

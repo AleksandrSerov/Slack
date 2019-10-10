@@ -48,7 +48,7 @@ class Slack extends Component {
           <Col xs={3}>
             <Channels />
           </Col>
-          <Col style={{ height: '100vh' }}>
+          <Col>
             <Chat />
           </Col>
         </Row>

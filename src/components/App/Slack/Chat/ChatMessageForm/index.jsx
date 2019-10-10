@@ -26,29 +26,25 @@ class ChatMessageForm extends Component {
 
     return (
       <form
-        className="form-inline col"
+        className="form-inline pt-3"
         id="mainForm"
-        style={{ height: '20%' }}
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <div className="input-group col">
-          <Field
-            name="text"
-            required
-            component="input"
-            type="text"
-            className="form-control border-right-0"
-            placeholder="Enter message"
-          />
-          <button
-            className="btn btn-primary border-left-0"
-            id="sendButton"
-            type="submit"
-            disabled={pristine || submitting}
-          >
-            {submitting ? 'Sending...' : 'Send'}
-          </button>
-        </div>
+        <Field
+          name="text"
+          required
+          component="input"
+          type="text"
+          className="form-control border-right-0 w-50"
+          placeholder="Enter message"
+        />
+        <button
+          className="btn btn-primary border-left-0"
+          type="submit"
+          disabled={pristine || submitting}
+        >
+          {submitting ? 'Sending...' : 'Send'}
+        </button>
       </form>
     );
   }

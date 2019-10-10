@@ -9,6 +9,7 @@ import Slack from './Slack';
 import { convertInitialState, getUsername } from './_helpers';
 import RemoveChannelModal from './RemoveChannelModal';
 import EditChannelModal from './RenameChannelModal';
+import ErrorModal from './ErrorModal';
 
 const initState = convertInitialState(window.gon);
 const username = getUsername();
@@ -32,6 +33,7 @@ export default () => {
         <Slack />
         <RemoveChannelModal />
         <EditChannelModal />
+        <ErrorModal />
       </UsernameContext.Provider>
     </Provider>,
     document.getElementById('app'),

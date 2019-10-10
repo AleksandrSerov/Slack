@@ -15,7 +15,7 @@ const mapStatetoProps = (state) => {
 @withReduxForm('RenameChannel')
 class RenameChannelModal extends Component {
   handleRenameChannel = async (data) => {
-    const { actions, renameChannelId } = this.props;
+    const { actions, renameChannelId, reset } = this.props;
     const { name } = data;
     try {
       await actions.renameChannel({ id: renameChannelId, name });
@@ -23,6 +23,7 @@ class RenameChannelModal extends Component {
       console.error(error);
     }
     actions.clearRenamingChannelId();
+    reset();
   };
 
   handleClose = () => {
