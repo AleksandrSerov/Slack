@@ -27,9 +27,10 @@ class RenameChannelModal extends Component {
   };
 
   handleClose = () => {
-    const { actions } = this.props;
+    const { actions, reset } = this.props;
 
     actions.clearRenamingChannelId();
+    reset();
   };
 
   render() {
