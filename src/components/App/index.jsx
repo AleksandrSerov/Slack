@@ -7,9 +7,9 @@ import rootReducer from '../../reducers';
 import UsernameContext from '../../UsernameContext';
 import Slack from './Slack';
 import { convertInitialState, getUsername } from './_helpers';
-import RemoveChannelModal from './RemoveChannelModal';
+import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './RenameChannelModal';
-import ErrorModal from './ErrorModal';
+import ErrorModal from './Modals/ErrorModal';
 
 const initState = convertInitialState(window.gon);
 const username = getUsername();

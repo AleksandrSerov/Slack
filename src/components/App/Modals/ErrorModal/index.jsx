@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-bootstrap';
-import connect from '../../../connect';
+import connect from '../../../../connect';
 
 const mapStateToProps = (state) => ({
   errorModal: state.modals.errorModal,
@@ -21,7 +21,7 @@ class ErrorModal extends Component {
     return (
       isShow && (
         <Alert variant="danger" className="fixed-bottom">
-          Something went wrong, error: 
+          Something went wrong, error:
           <span>{`${errorType}`}</span>
           <button
             type="button"

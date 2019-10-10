@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Modal, Button, Form } from 'react-bootstrap';
-import connect from '../../../connect';
-import withReduxForm from '../../../reduxForm';
+import connect from '../../../../connect';
+import withReduxForm from '../../../../reduxForm';
 import RemoveChannelButton from './RemoveChannelButton';
 
 const mapStatetoProps = (state) => {
