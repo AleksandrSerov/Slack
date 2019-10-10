@@ -58,11 +58,7 @@ class RenameChannelModal extends Component {
             <Button variant="secondary" onClick={this.handleClose}>
               Cancel
             </Button>
-            <Button
-              variant="primary"
-              onClick={this.handleRenameChannel}
-              type="submit"
-            >
+            <Button variant="primary" type="submit">
               Rename channel
             </Button>
           </Modal.Footer>
