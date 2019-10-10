@@ -5,7 +5,7 @@ import withReduxForm from '../../../../../reduxForm';
 import connect from '../../../../../connect';
 
 @connect()
-@withReduxForm('ChannelForm')
+@withReduxForm('channelForm')
 class ChannelForm extends Component {
   handleSubmit = async (data) => {
     const { name } = data;
@@ -13,7 +13,7 @@ class ChannelForm extends Component {
     try {
       await actions.createChannel({ name: String(name) });
     } catch (error) {
-      throw error;
+      throw new Error('Error while creating channel', error);
     }
     reset();
   };
@@ -21,19 +21,14 @@ class ChannelForm extends Component {
   render() {
     const { handleSubmit, submitting, pristine } = this.props;
     return (
-      <Form
-        id="channelForm"
-        onSubmit={handleSubmit(this.handleSubmit)}
-        className="mb-3 mt-3"
-        inline
-      >
-        <InputGroup>
+      <Form id="channelForm" onSubmit={handleSubmit(this.handleSubmit)} inline>
+        <InputGroup className="w-100 mb-3">
           <Field
             required
             name="name"
             component="input"
             type="text"
-            className="form-control border-right-0"
+            className="form-control border-right-0 w-75"
             placeholder="Enter channel name"
           />
           <InputGroup.Append>

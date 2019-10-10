@@ -12,15 +12,15 @@ const mapStatetoProps = (state) => {
   return props;
 };
 @connect(mapStatetoProps)
-@withReduxForm('RenameChannel')
+@withReduxForm('renameChannelForm')
 class RenameChannelModal extends Component {
   handleRenameChannel = async (data) => {
     const { actions, renameChannelId, reset } = this.props;
     const { name } = data;
     try {
-      await actions.renameChannel({ id: renameChannelId, name });
+      await actions.renameChannel({ id: renameChannelId, name: String(name) });
     } catch (error) {
-      console.error(error);
+      throw new Error('Error while renaming channel', error);
     }
     actions.clearRenamingChannelId();
     reset();
@@ -33,8 +33,7 @@ class RenameChannelModal extends Component {
   };
 
   render() {
-    const { isShowModal, handleSubmit } = this.props;
-
+    const { isShowModal, handleSubmit, submitting, pristine } = this.props;
     return (
       <Modal show={isShowModal} onHide={this.handleClose}>
         <form
@@ -45,7 +44,6 @@ class RenameChannelModal extends Component {
             <Modal.Title>Rename channel</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Are your sure rename channel?
             <Field
               name="name"
               required
@@ -59,8 +57,12 @@ class RenameChannelModal extends Component {
             <Button variant="secondary" onClick={this.handleClose}>
               Cancel
             </Button>
-            <Button variant="primary" type="submit">
-              Rename channel
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={submitting || pristine}
+            >
+              {submitting ? 'Renaming...' : 'Rename'}
             </Button>
           </Modal.Footer>
         </form>

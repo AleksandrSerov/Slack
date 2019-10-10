@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Field } from 'redux-form';
+import { Modal, Button, Form } from 'react-bootstrap';
 import connect from '../../../connect';
+import withReduxForm from '../../../reduxForm';
+import RemoveChannelButton from './RemoveChannelButton';
 
 const mapStatetoProps = (state) => {
   const props = {
@@ -10,13 +13,14 @@ const mapStatetoProps = (state) => {
   return props;
 };
 @connect(mapStatetoProps)
+@withReduxForm('removeChannelForm')
 class RemoveChannelModal extends Component {
   handleRemoveChannel = async () => {
     const { actions, removingChannelId } = this.props;
     try {
       await actions.removeChannel({ id: removingChannelId });
     } catch (error) {
-      console.error(error);
+      throw new Error('Error while removing channel', error);
     }
     actions.clearRemovingChannelId();
   };
@@ -28,7 +32,7 @@ class RemoveChannelModal extends Component {
   };
 
   render() {
-    const { isShowModal } = this.props;
+    const { isShowModal, handleSubmit } = this.props;
 
     return (
       <Modal show={isShowModal} onHide={this.handleClose}>
@@ -40,9 +44,12 @@ class RemoveChannelModal extends Component {
           <Button variant="secondary" onClick={this.handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={this.handleRemoveChannel}>
-            Remove channel
-          </Button>
+          <Form
+            id="removeChannel"
+            onSubmit={handleSubmit(this.handleRemoveChannel)}
+          >
+            <Field name="submit" component={RemoveChannelButton} />
+          </Form>
         </Modal.Footer>
       </Modal>
     );
