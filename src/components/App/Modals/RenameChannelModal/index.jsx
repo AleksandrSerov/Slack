@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Field } from 'redux-form';
-import connect from '../../../connect';
-import withReduxForm from '../../../reduxForm';
+import connect from '../../../../decorators/connect';
+import withReduxForm from '../../../../decorators/reduxForm';
 
 const mapStatetoProps = (state) => {
   const props = {

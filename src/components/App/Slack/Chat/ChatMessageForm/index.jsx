@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import connect from '../../../../../connect';
-import withReduxForm from '../../../../../reduxForm';
-import UsernameContext from '../../../../../UsernameContext';
+import connect from '../../../../../decorators/connect';
+import withReduxForm from '../../../../../decorators/reduxForm';
+import UsernameContext from '../../../../../usernameContext';
 
 @connect()
 @withReduxForm('chatMessageForm')
@@ -11,8 +11,8 @@ class ChatMessageForm extends Component {
   static contextType = UsernameContext;
 
   handleSendMessage = async (data) => {
-    const { text } = data;
     const { actions, reset } = this.props;
+    const { text } = data;
     const { username } = this.context;
     try {
       await actions.sendMessage({ text: String(text), username });

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { InputGroup, Button, Form } from 'react-bootstrap';
 import { Field } from 'redux-form';
-import withReduxForm from '../../../../../reduxForm';
-import connect from '../../../../../connect';
+import withReduxForm from '../../../../../decorators/reduxForm';
+import connect from '../../../../../decorators/connect';
 
 @connect()
 @withReduxForm('channelForm')

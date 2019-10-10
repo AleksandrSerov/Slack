@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../../reducers';
-import UsernameContext from '../../UsernameContext';
+import UsernameContext from '../../usernameContext';
 import Slack from './Slack';
 import { convertInitialState, getUsername } from './_helpers';
 import RemoveChannelModal from './Modals/RemoveChannelModal';
-import RenameChannelModal from './RenameChannelModal';
+import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
 
 const initState = convertInitialState(window.gon);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-bootstrap';
-import connect from '../../../../connect';
+import connect from '../../../../decorators/connect';
 
 const mapStateToProps = (state) => ({
   errorModal: state.modals.errorModal,

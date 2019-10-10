@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import io from 'socket.io-client';
 import Channels from './Channels';
 import Chat from './Chat';
-import connect from '../../../connect';
+import connect from '../../../decorators/connect';
 
 const mapStateToProps = (state) => ({
   currentChannelId: state.currentChannelId,
@@ -27,16 +27,16 @@ class Slack extends Component {
       const { currentChannelId, channels, messages } = this.props;
       const { id } = data;
       actions.removeChannelFromStore({ id, messages });
-      if (currentChannelId === id) {
-        const [newCurrentChannelId] = channels.allIds;
-        actions.setCurrentChannelId({
-          id: newCurrentChannelId,
-        });
+      if (currentChannelId !== id) {
+        return;
       }
+      const [firstChannelId] = channels.allIds;
+      actions.setCurrentChannelId({
+        id: firstChannelId,
+      });
     });
     socket.on('renameChannel', ({ data }) => {
       const { attributes } = data;
-
       actions.updateChannel({ attributes });
     });
   }

@@ -18,7 +18,8 @@ export const sendMessage = (data) => async (dispatch, getState) => {
   }
 };
 
-export const createChannel = ({ name }) => async (dispatch) => {
+export const createChannel = (data) => async (dispatch) => {
+  const { name } = data;
   dispatch(actions.createChannelRequest());
   try {
     await axios.post(routes.channelPath(), {
@@ -31,11 +32,12 @@ export const createChannel = ({ name }) => async (dispatch) => {
     dispatch(actions.createChannelSuccess());
   } catch (error) {
     dispatch(actions.createChannelFailure());
-    throw error;
+    throw new Error('Error while creating channel', error);
   }
 };
 
-export const removeChannel = ({ id }) => async (dispatch) => {
+export const removeChannel = (data) => async (dispatch) => {
+  const { id } = data;
   dispatch(actions.removeChannelRequest());
   try {
     await axios.delete(routes.channelPath(id), {
@@ -48,11 +50,12 @@ export const removeChannel = ({ id }) => async (dispatch) => {
     dispatch(actions.removeChannelSuccess());
   } catch (error) {
     dispatch(actions.removeChannelFailure());
-    throw error;
+    throw new Error('Error while removing channel', error);
   }
 };
 
-export const renameChannel = ({ id, name }) => async (dispatch) => {
+export const renameChannel = (data) => async (dispatch) => {
+  const { id, name } = data;
   dispatch(actions.renameChannelRequest());
   try {
     await axios.patch(routes.channelPath(id), {
@@ -65,6 +68,6 @@ export const renameChannel = ({ id, name }) => async (dispatch) => {
     dispatch(actions.renameChannelSuccess());
   } catch (error) {
     dispatch(actions.renameChannelFailure());
-    throw error;
+    throw new Error('Error renaming removing channel', error);
   }
 };

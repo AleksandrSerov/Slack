@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import ChannelForm from './ChannelForm';
-import connect from '../../../../connect';
+import connect from '../../../../decorators/connect';
 
 const mapStateToProps = (state) => ({
   channels: state.channels.allIds.map((id) => state.channels.byId[id]),

@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 
 export const setInitialState = createAction('INITIAL_STATE/SET');
+
 export const setCurrentChannelId = createAction('CURRENT_CHANNEL_ID/SET');
 
 export const sendMessageRequest = createAction('MESSAGE_SEND/REQUEST');
@@ -21,17 +22,17 @@ export const closeRemoveChannelModal = createAction(
 export const removeChannelRequest = createAction('CHANNEL_REMOVE/REQUEST');
 export const removeChannelSuccess = createAction('CHANNEL_REMOVE/SUCCESS');
 export const removeChannelFailure = createAction('CHANNEL_REMOVE/FAILURE');
+export const removeChannelFromStore = createAction('CHANNEL/REMOVE');
+
 export const setRemovingChannelId = createAction('REMOVING_CHANNEL_ID/SET');
 export const clearRemovingChannelId = createAction('REMOVING_CHANNEL_ID/CLEAR');
-export const removeChannelFromStore = createAction('CHANNEL/REMOVE');
 
 export const renameChannelRequest = createAction('CHANNEL_RENAME/REQUEST');
 export const renameChannelSuccess = createAction('CHANNEL_RENAME/SUCCESS');
 export const renameChannelFailure = createAction('CHANNEL_RENAME/FAILURE');
-export const clearRenamingChannelId = createAction('RENAME_CHANNEL_ID/CLEAR');
-export const setRenamingChannelId = createAction('RENAME_CHANNEL_ID/SET');
-export const renameChannelFromStore = createAction('CHANNEL/RENAME');
-
 export const updateChannel = createAction('CHANNEL/UPDATE');
+
+export const setRenamingChannelId = createAction('RENAME_CHANNEL_ID/SET');
+export const clearRenamingChannelId = createAction('RENAME_CHANNEL_ID/CLEAR');
 
 export const closeErrorModal = createAction('ERROR_MODAL/CLOSE');
