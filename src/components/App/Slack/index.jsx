@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 @connect(mapStateToProps)
 class Slack extends Component {
   componentDidMount() {
-    const { actions, currentChannelId, channels } = this.props;
+    const { actions } = this.props;
     const socket = io();
     socket.on('newMessage', ({ data }) => {
       const { attributes } = data;
@@ -23,6 +23,7 @@ class Slack extends Component {
       actions.addChannel({ attributes });
     });
     socket.on('removeChannel', ({ data }) => {
+      const { currentChannelId, channels } = this.props;
       const { id } = data;
       actions.removeChannelFromStore({ id });
       if (currentChannelId === id) {
