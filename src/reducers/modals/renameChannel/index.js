@@ -4,10 +4,10 @@ import actions from '../../../actions';
 
 const isShow = handleActions(
   {
-    [actions.setRenamingChannelId](state, { payload }) {
+    [actions.setRenamingChannelId]() {
       return true;
     },
-    [actions.clearRenamingChannelId](state, { payload }) {
+    [actions.clearRenamingChannelId]() {
       return false;
     },
   },

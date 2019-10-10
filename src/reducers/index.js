@@ -18,13 +18,13 @@ const currentChannelId = handleActions(
 
 const sendMessageState = handleActions(
   {
-    [actions.sendMessageRequest](state, { payload }) {
+    [actions.sendMessageRequest]() {
       return 'request';
     },
-    [actions.sendMessageSuccess](state, { payload }) {
+    [actions.sendMessageSuccess]() {
       return 'success';
     },
-    [actions.sendMessageFailure](state, { payload }) {
+    [actions.sendMessageFailure]() {
       return 'failure';
     },
   },
@@ -33,13 +33,13 @@ const sendMessageState = handleActions(
 
 const createChannelState = handleActions(
   {
-    [actions.createChannelRequest](state, { payload }) {
+    [actions.createChannelRequest]() {
       return 'request';
     },
-    [actions.createChannelSuccess](state, { payload }) {
+    [actions.createChannelSuccess]() {
       return 'success';
     },
-    [actions.createChannelFailure](state, { payload }) {
+    [actions.createChannelFailure]() {
       return 'failure';
     },
   },
@@ -51,7 +51,7 @@ const removingChannelId = handleActions(
     [actions.setRemovingChannelId](state, { payload }) {
       return payload.id;
     },
-    [actions.clearRemovingChannelId](state, { payload }) {
+    [actions.clearRemovingChannelId]() {
       return null;
     },
   },
@@ -63,7 +63,7 @@ const renamingChannelId = handleActions(
     [actions.setRenamingChannelId](state, { payload }) {
       return payload.id;
     },
-    [actions.clearRenamingChannelId](state, { payload }) {
+    [actions.clearRenamingChannelId]() {
       return null;
     },
   },
