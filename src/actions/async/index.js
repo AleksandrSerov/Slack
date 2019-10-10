@@ -18,7 +18,7 @@ export const sendMessage = (data) => async (dispatch, getState) => {
   }
 };
 
-export const createChannel = ({ name }) => async (dispatch, getState) => {
+export const createChannel = ({ name }) => async (dispatch) => {
   dispatch(actions.createChannelRequest());
   try {
     await axios.post(routes.channelPath(), {
@@ -35,7 +35,7 @@ export const createChannel = ({ name }) => async (dispatch, getState) => {
   }
 };
 
-export const removeChannel = ({ id }) => async (dispatch, getState) => {
+export const removeChannel = ({ id }) => async (dispatch) => {
   dispatch(actions.removeChannelRequest());
   try {
     await axios.delete(routes.channelPath(id), {
@@ -52,7 +52,7 @@ export const removeChannel = ({ id }) => async (dispatch, getState) => {
   }
 };
 
-export const renameChannel = ({ id, name }) => async (dispatch, getState) => {
+export const renameChannel = ({ id, name }) => async (dispatch) => {
   dispatch(actions.renameChannelRequest());
   try {
     await axios.patch(routes.channelPath(id), {

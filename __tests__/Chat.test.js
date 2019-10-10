@@ -19,8 +19,6 @@
 
 //   const { getByLabelText, getByText, findByRole } = render(<Chat />);
 // });
-import getUsername from '../src/components/App/_helpers';
-
 test('User shoud have name', () => {
   expect(true).toBe(true);
 });
