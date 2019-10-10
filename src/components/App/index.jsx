@@ -8,7 +8,7 @@ import UsernameContext from '../../UsernameContext';
 import Slack from './Slack';
 import { convertInitialState, getUsername } from './_helpers';
 import RemoveChannelModal from './RemoveChannelModal';
-import EditChannelModal from './RenameChannelModal';
+import RenameChannelModal from './RenameChannelModal';
 import ErrorModal from './ErrorModal';
 
 const initState = convertInitialState(window.gon);
@@ -32,7 +32,7 @@ export default () => {
       <UsernameContext.Provider value={{ username }}>
         <Slack />
         <RemoveChannelModal />
-        <EditChannelModal />
+        <RenameChannelModal />
         <ErrorModal />
       </UsernameContext.Provider>
     </Provider>,
