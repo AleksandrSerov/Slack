@@ -8,6 +8,7 @@ import connect from '../../../connect';
 const mapStateToProps = (state) => ({
   currentChannelId: state.currentChannelId,
   channels: state.channels,
+  messages: state.messages,
 });
 @connect(mapStateToProps)
 class Slack extends Component {
@@ -23,9 +24,9 @@ class Slack extends Component {
       actions.addChannel({ attributes });
     });
     socket.on('removeChannel', ({ data }) => {
-      const { currentChannelId, channels } = this.props;
+      const { currentChannelId, channels, messages } = this.props;
       const { id } = data;
-      actions.removeChannelFromStore({ id });
+      actions.removeChannelFromStore({ id, messages });
       if (currentChannelId === id) {
         const [newCurrentChannelId] = channels.allIds;
         actions.setCurrentChannelId({
