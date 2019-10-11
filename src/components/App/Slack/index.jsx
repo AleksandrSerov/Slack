@@ -43,7 +43,7 @@ class Slack extends Component {
 
   render() {
     return (
-      <Container fluid className="vh-100 pt-3">
+      <Container fluid>
         <Row>
           <Col xs={3}>
             <Channels />

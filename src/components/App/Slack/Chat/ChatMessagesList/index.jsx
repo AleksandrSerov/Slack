@@ -22,7 +22,7 @@ class ChatMessagesList extends Component {
   };
 
   render() {
-    return <div className="h-75 overflow-auto">{this.renderMessages()}</div>;
+    return <div className="h-100 overflow-auto">{this.renderMessages()}</div>;
   }
 }
 

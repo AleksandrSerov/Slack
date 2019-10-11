@@ -11,14 +11,14 @@ import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
 
-const initState = convertInitialState(window.gon);
-const username = getUsername();
-
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   : compose;
 /* eslint-enable */
+
+const initState = convertInitialState(window.gon);
+const username = getUsername();
 
 const store = createStore(
   rootReducer,

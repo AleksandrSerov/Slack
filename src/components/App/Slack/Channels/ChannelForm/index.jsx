@@ -22,7 +22,7 @@ class ChannelForm extends Component {
     const { handleSubmit, submitting, pristine } = this.props;
     return (
       <Form id="channelForm" onSubmit={handleSubmit(this.handleSubmit)} inline>
-        <InputGroup className="w-100 mb-3">
+        <InputGroup className="w-100 py-3">
           <Field
             required
             name="name"
