@@ -3,12 +3,12 @@ import { Field } from 'redux-form';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import connect from '../../../../../decorators/connect';
 import withReduxForm from '../../../../../decorators/reduxForm';
-import UsernameContext from '../../../../../usernameContext';
+import usernameContext from '../../../../../usernameContext';
 
 @connect()
 @withReduxForm('chatMessageForm')
 class ChatMessageForm extends Component {
-  static contextType = UsernameContext;
+  static contextType = usernameContext;
 
   handleSendMessage = async (data) => {
     const { actions, reset } = this.props;
