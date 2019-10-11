@@ -1,3 +1,7 @@
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+const isAnalyse = process.argv.includes('--analyse');
+
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: ['babel-polyfill', `${__dirname}/src/index.js`],
@@ -24,4 +28,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [...(isAnalyse ? [new BundleAnalyzerPlugin()] : [])],
 };

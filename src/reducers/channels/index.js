@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import _ from 'lodash';
+import { omit } from 'lodash';
 import actions from '../../actions';
 
 const byId = handleActions(
@@ -15,7 +15,7 @@ const byId = handleActions(
     },
     [actions.removeChannelFromStore](state, { payload }) {
       const { id } = payload;
-      return _.omit(state, id);
+      return omit(state, id);
     },
     [actions.updateChannel](state, { payload }) {
       const { id, name } = payload.attributes;

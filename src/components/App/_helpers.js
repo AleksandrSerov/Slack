@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import faker from 'faker';
+import faker from 'faker/locale/en';
 
 export const convertInitialState = (state) => {
   const { currentChannelId } = state;

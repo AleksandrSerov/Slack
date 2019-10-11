@@ -25,4 +25,8 @@ lint:
 publish:
 	npm publish
 
+analyse:
+	rm -rf dist
+	npm run analyse
+
 .PHONY: test
