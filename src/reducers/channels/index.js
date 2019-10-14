@@ -6,11 +6,11 @@ import actions from '../../actions';
 const byId = handleActions(
   {
     [actions.addChannel](state, { payload }) {
-      const { attributes } = payload;
+      const { channel } = payload;
 
       return {
         ...state,
-        [attributes.id]: attributes,
+        [channel.id]: channel,
       };
     },
     [actions.removeChannelFromStore](state, { payload }) {
@@ -18,15 +18,11 @@ const byId = handleActions(
       return omit(state, id);
     },
     [actions.updateChannel](state, { payload }) {
-      const { id, name } = payload.attributes;
-      const updatedChannel = {
-        ...state[id],
-        name,
-      };
+      const { channel } = payload;
 
       return {
         ...state,
-        [id]: updatedChannel,
+        [channel.id]: { ...channel },
       };
     },
   },
@@ -36,8 +32,8 @@ const byId = handleActions(
 const allIds = handleActions(
   {
     [actions.addChannel](state, { payload }) {
-      const { attributes } = payload;
-      return [...state, attributes.id];
+      const { channel } = payload;
+      return [...state, channel.id];
     },
     [actions.removeChannelFromStore](state, { payload }) {
       const { id } = payload;
