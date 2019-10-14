@@ -18,7 +18,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   : compose;
 /* eslint-enable */
 
-const initState = convertInitialState(window.gon);
+const initState = convertInitialState(gon);
 const username = Cookies.get('username') || faker.name.findName();
 
 if (!Cookies.get('username')) {
