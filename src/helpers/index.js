@@ -1,8 +1,6 @@
-import Cookies from 'js-cookie';
-import faker from 'faker/locale/en';
 import { keyBy } from 'lodash';
 
-export const convertInitialState = (state) => {
+export default (state) => {
   const { currentChannelId } = state;
   const messages = {
     allIds: state.messages.map((message) => message.id),
@@ -19,16 +17,4 @@ export const convertInitialState = (state) => {
     channels,
     currentChannelId,
   };
-};
-
-export const getUsername = () => {
-  const isUsernameExist = Boolean(Cookies.get('username'));
-
-  if (!isUsernameExist) {
-    const randomName = faker.name.findName();
-    Cookies.set('username', randomName);
-  }
-  const username = Cookies.get('username');
-
-  return username;
 };

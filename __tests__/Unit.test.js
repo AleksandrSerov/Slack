@@ -1,18 +1,6 @@
-import Cookies from 'js-cookie';
-import { getUsername, convertInitialState } from '../src/helpers';
+import convertInitialState from '../src/helpers';
 
 describe('Testings helpers', () => {
-  test('getUserName', () => {
-    // User alredy have coockie
-    Cookies.set('username', 'testUser');
-    expect(getUsername()).toBe('testUser');
-
-    // User not have coockie
-    Cookies.remove('username');
-    expect(getUsername()).not.toBe('testUser');
-    expect(getUsername()).not.toHaveLength(0);
-  });
-
   test('convertInitialState empty', () => {
     // Empty state
     const expected = {
