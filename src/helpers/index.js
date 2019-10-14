@@ -1,28 +1,17 @@
 import Cookies from 'js-cookie';
 import faker from 'faker/locale/en';
+import { keyBy } from 'lodash';
 
 export const convertInitialState = (state) => {
   const { currentChannelId } = state;
   const messages = {
     allIds: state.messages.map((message) => message.id),
-    byId: state.messages.reduce(
-      (acc, message) => ({
-        ...acc,
-        [message.id]: message,
-      }),
-      {},
-    ),
+    byId: keyBy(state.messages, ({ id }) => id),
   };
 
   const channels = {
     allIds: state.channels.map((channel) => channel.id),
-    byId: state.channels.reduce(
-      (acc, channel) => ({
-        ...acc,
-        [channel.id]: channel,
-      }),
-      {},
-    ),
+    byId: keyBy(state.channels, ({ id }) => id),
   };
 
   return {
