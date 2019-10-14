@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
+import { omitBy } from 'lodash';
 import actions from '../../actions';
 
 const byId = handleActions(
@@ -13,18 +14,8 @@ const byId = handleActions(
       };
     },
     [actions.removeChannelFromStore](state, { payload }) {
-      const { id, messages } = payload;
-
-      return messages.allIds.reduce((acc, messageId) => {
-        if (messages.byId[messageId].channelId !== id) {
-          return {
-            ...acc,
-            [messageId]: messages.byId[messageId],
-          };
-        }
-
-        return acc;
-      }, {});
+      const { id } = payload;
+      return omitBy(state, ({ channelId }) => channelId === id);
     },
   },
   {},
