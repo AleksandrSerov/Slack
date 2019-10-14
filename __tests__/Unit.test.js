@@ -1,8 +1,5 @@
 import Cookies from 'js-cookie';
-import {
-  getUsername,
-  convertInitialState,
-} from '../src/components/App/_helpers';
+import { getUsername, convertInitialState } from '../src/helpers';
 
 describe('Testings helpers', () => {
   test('getUserName', () => {

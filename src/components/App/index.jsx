@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../../reducers';
 import UsernameContext from '../../usernameContext';
 import Slack from './Slack';
-import { convertInitialState, getUsername } from './_helpers';
+import { convertInitialState, getUsername } from '../../helpers';
 import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
