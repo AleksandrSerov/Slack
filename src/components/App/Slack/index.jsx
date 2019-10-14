@@ -16,12 +16,12 @@ class Slack extends Component {
     const { actions } = this.props;
     const socket = io();
     socket.on('newMessage', ({ data }) => {
-      const { attributes } = data;
-      actions.addMessage({ attributes });
+      const { attributes: message } = data;
+      actions.addMessage({ message });
     });
     socket.on('newChannel', ({ data }) => {
-      const { attributes } = data;
-      actions.addChannel({ attributes });
+      const { attributes: channel } = data;
+      actions.addChannel({ channel });
     });
     socket.on('removeChannel', ({ data }) => {
       const { currentChannelId, channels, messages } = this.props;
@@ -36,8 +36,8 @@ class Slack extends Component {
       });
     });
     socket.on('renameChannel', ({ data }) => {
-      const { attributes } = data;
-      actions.updateChannel({ attributes });
+      const { attributes: channel } = data;
+      actions.updateChannel({ channel });
     });
   }
 
