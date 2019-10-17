@@ -12,6 +12,8 @@ import convertInitialState from '../../helpers';
 import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
+import './i18n';
+
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

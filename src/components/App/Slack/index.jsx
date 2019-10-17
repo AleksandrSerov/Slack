@@ -14,7 +14,6 @@ const mapStateToProps = (state) => ({
 class Slack extends Component {
   componentDidMount() {
     const { actions } = this.props;
-
     startSocketMessaging(actions);
   }
 

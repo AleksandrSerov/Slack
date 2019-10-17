@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import connect from '../../../../../decorators/connect';
+import withTranslate from '../../../../../decorators/translation';
 import withReduxForm from '../../../../../decorators/reduxForm';
 import usernameContext from '../../../../../usernameContext';
 
 @connect()
 @withReduxForm('chatMessageForm')
+@withTranslate()
 class ChatMessageForm extends Component {
   static contextType = usernameContext;
 
@@ -23,8 +25,7 @@ class ChatMessageForm extends Component {
   };
 
   render() {
-    const { handleSubmit, submitting, pristine } = this.props;
-
+    const { handleSubmit, submitting, pristine, t } = this.props;
     return (
       <Form
         className="form-inline mt-2"
@@ -38,7 +39,7 @@ class ChatMessageForm extends Component {
             component="input"
             type="text"
             className="form-control border-right-0"
-            placeholder="Enter message"
+            placeholder={t('enterMessage')}
           />
           <InputGroup.Append>
             <Button
@@ -46,7 +47,7 @@ class ChatMessageForm extends Component {
               type="submit"
               disabled={pristine || submitting}
             >
-              {submitting ? 'Sending...' : 'Send'}
+              {submitting ? t('sending') : t('send')}
             </Button>
           </InputGroup.Append>
         </InputGroup>

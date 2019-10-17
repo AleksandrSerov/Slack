@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Field } from 'redux-form';
 import connect from '../../../../decorators/connect';
+import withTranslation from '../../../../decorators/translation';
 import withReduxForm from '../../../../decorators/reduxForm';
 
 const mapStatetoProps = (state) => {
@@ -13,6 +14,7 @@ const mapStatetoProps = (state) => {
 };
 @connect(mapStatetoProps)
 @withReduxForm('renameChannelForm')
+@withTranslation()
 class RenameChannelModal extends Component {
   handleRenameChannel = async (data) => {
     const { actions, renameChannelId, reset } = this.props;
@@ -34,7 +36,7 @@ class RenameChannelModal extends Component {
   };
 
   render() {
-    const { isShowModal, handleSubmit, submitting, pristine } = this.props;
+    const { isShowModal, handleSubmit, submitting, pristine, t } = this.props;
     return (
       <Modal show={isShowModal} onHide={this.handleClose}>
         <form
@@ -42,7 +44,7 @@ class RenameChannelModal extends Component {
           onSubmit={handleSubmit(this.handleRenameChannel)}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Rename channel</Modal.Title>
+            <Modal.Title>{t('renameChannel')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Field
@@ -51,19 +53,19 @@ class RenameChannelModal extends Component {
               component="input"
               type="text"
               className="form-control"
-              placeholder="Enter new channel name"
+              placeholder={t('enterChannelName')}
             />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
-              Cancel
+              {t('cancel')}
             </Button>
             <Button
               variant="primary"
               type="submit"
               disabled={submitting || pristine}
             >
-              {submitting ? 'Renaming...' : 'Rename'}
+              {submitting ? t('renaming') : t('rename')}
             </Button>
           </Modal.Footer>
         </form>

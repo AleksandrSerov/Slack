@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Modal, Button, Form } from 'react-bootstrap';
 import connect from '../../../../decorators/connect';
+import withTranslation from '../../../../decorators/translation';
 import withReduxForm from '../../../../decorators/reduxForm';
 import RemoveChannelButton from './RemoveChannelButton';
 
@@ -14,6 +15,7 @@ const mapStatetoProps = (state) => {
 };
 @connect(mapStatetoProps)
 @withReduxForm('removeChannelForm')
+@withTranslation()
 class RemoveChannelModal extends Component {
   handleRemoveChannel = async () => {
     const { actions, removingChannelId } = this.props;
@@ -32,17 +34,17 @@ class RemoveChannelModal extends Component {
   };
 
   render() {
-    const { isShowModal, handleSubmit } = this.props;
+    const { isShowModal, handleSubmit, t } = this.props;
 
     return (
       <Modal show={isShowModal} onHide={this.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Removing channel</Modal.Title>
+          <Modal.Title>{t('removeChannel')}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are your sure remove channel?</Modal.Body>
+        <Modal.Body>{t('areYouSure')}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.handleClose}>
-            Cancel
+            {t('cancel')}
           </Button>
           <Form
             id="removeChannel"

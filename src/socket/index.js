@@ -12,7 +12,6 @@ export default (actions) => {
     actions.addChannel({ channel });
   });
   socket.on('removeChannel', ({ data }) => {
-    const { currentChannelId, channels, messages } = this.props;
     const { id } = data;
     actions.removeChannelFromStore({ id, messages });
     if (currentChannelId !== id) {
