@@ -12,6 +12,7 @@ import convertInitialState from '../../helpers';
 import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
+import startSocketMessaging from '../../socket';
 import './i18n';
 
 /* eslint-disable no-underscore-dangle */
@@ -32,6 +33,8 @@ const store = createStore(
   initState,
   composeEnhancers(applyMiddleware(thunk)),
 );
+
+startSocketMessaging(store);
 
 export default () => {
   ReactDOM.render(

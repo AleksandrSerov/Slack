@@ -1,8 +1,11 @@
-/* eslint-disable no-undef */
 import io from 'socket.io-client';
+import { bindActionCreators } from 'redux';
+import actionsCreators from '../actions/index';
 
-export default (actions) => {
+export default (store) => {
   const socket = io();
+  const { dispatch, getState } = store;
+  const actions = bindActionCreators(actionsCreators, dispatch);
 
   socket.on('newMessage', ({ data }) => {
     const { attributes: message } = data;
@@ -14,6 +17,7 @@ export default (actions) => {
   });
   socket.on('removeChannel', ({ data }) => {
     const { id } = data;
+    const { channels, messages, currentChannelId } = getState();
     actions.removeChannelFromStore({ id, messages });
     if (currentChannelId !== id) {
       return;
