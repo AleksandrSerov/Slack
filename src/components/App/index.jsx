@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Cookies from 'js-cookie';
+import gon from 'gon';
 import faker from 'faker/locale/en';
 import rootReducer from '../../reducers';
 import UsernameContext from '../../usernameContext';
@@ -14,7 +15,6 @@ import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
 import startSocketMessaging from '../../socket';
 import './i18n';
-
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

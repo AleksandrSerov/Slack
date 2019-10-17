@@ -12,9 +12,6 @@ env:
   node: true
   jest: true
 
-globals:
-  gon: 'readonly'
-
 rules:
   import/no-unresolved: 0
   import/extensions: 0
