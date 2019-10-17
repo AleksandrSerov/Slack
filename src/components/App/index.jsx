@@ -1,51 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import Cookies from 'js-cookie';
-import gon from 'gon';
-import faker from 'faker/locale/en';
-import rootReducer from '../../reducers';
-import UsernameContext from '../../usernameContext';
+import React, { Component } from 'react';
 import Slack from './Slack';
-import convertInitialState from '../../helpers';
 import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
-import startSocketMessaging from '../../socket';
-import './i18n';
-/* eslint-disable no-underscore-dangle */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  : compose;
-/* eslint-enable */
 
-const initState = convertInitialState(gon);
-const username = Cookies.get('username') || faker.name.findName();
-
-if (!Cookies.get('username')) {
-  Cookies.set('username', username);
-}
-
-const store = createStore(
-  rootReducer,
-  initState,
-  composeEnhancers(applyMiddleware(thunk)),
-);
-
-startSocketMessaging(store);
-
-export default () => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <UsernameContext.Provider value={{ username }}>
+// eslint-disable-next-line react/prefer-stateless-function
+export default class App extends Component {
+  render() {
+    return (
+      <>
         <Slack />
         <RemoveChannelModal />
         <RenameChannelModal />
         <ErrorModal />
-      </UsernameContext.Provider>
-    </Provider>,
-    document.getElementById('app'),
-  );
-};
+      </>
+    );
+  }
+}
