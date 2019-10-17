@@ -14,6 +14,7 @@ i18n
           sending: 'Sending',
           send: 'Send',
           enterChannelName: 'Enter channel name',
+          enterMessage: 'Enter message',
           rename: 'Rename',
           renameChannel: 'Rename channel',
           cancel: 'Cancel',
@@ -21,6 +22,7 @@ i18n
           removing: 'Removing',
           removeChannel: 'Remove channel',
           areYouSure: 'Are you sure?',
+          errorMessage: 'Something went wrong',
         },
       },
       ru: {
@@ -38,10 +40,10 @@ i18n
           removing: 'Удаление',
           removeChannel: 'Удалить канал',
           areYouSure: 'Вы уверены?',
+          errorMessage: 'Что-то пошло не так',
         },
       },
     },
-    lng: 'ru',
     fallbackLng: 'en',
   });
 

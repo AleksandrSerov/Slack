@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-bootstrap';
 import connect from '../../../../decorators/connect';
+import withTranslation from '../../../../decorators/translation';
 
 const mapStateToProps = (state) => ({
   errorModal: state.modals.errorModal,
 });
 @connect(mapStateToProps)
+@withTranslation()
 class ErrorModal extends Component {
   handleCloseModal = () => {
     const { actions } = this.props;
@@ -16,12 +18,15 @@ class ErrorModal extends Component {
   render() {
     const {
       errorModal: { isShow, errorType },
+      t,
     } = this.props;
 
     return (
       isShow && (
         <Alert variant="danger" className="fixed-bottom">
-          Something went wrong, error:
+          {t('errorMessage')}
+          :
+          {' '}
           <span>{`${errorType}`}</span>
           <button
             type="button"
