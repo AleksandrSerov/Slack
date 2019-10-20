@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import connect from '../../../../../decorators/connect';
+import connect from '../../../../decorators/connect';
 
 const mapStateToProps = (state) => {
   const { messages, currentChannelId } = state;

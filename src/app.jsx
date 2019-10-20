@@ -16,7 +16,7 @@ import rootReducer from './reducers';
 import convertInitialState from './helpers';
 import actionCreators from './actions';
 import App from './components/App';
-
+import UsernameContext from './usernameContext';
 import './i18n';
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -26,8 +26,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 
 const initialState = convertInitialState(gon);
 const username = Cookies.get('username') || faker.name.findName();
-const UsernameContext = React.createContext({});
-
 if (!Cookies.get('username')) {
   Cookies.set('username', username);
 }
