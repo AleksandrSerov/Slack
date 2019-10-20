@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-bootstrap';
-import connect from '../../../decorators/connect';
-import withTranslation from '../../../decorators/translation';
+import connect from '../../decorators/connect';
+import withTranslation from '../../decorators/translation';
 
 const mapStateToProps = (state) => ({
   errorModal: state.modals.errorModal,
@@ -24,10 +24,7 @@ class ErrorModal extends Component {
     return (
       isShow && (
         <Alert variant="danger" className="fixed-bottom">
-          {t('errorMessage')}
-          : 
-          {' '}
-          <span>{`${errorType}`}</span>
+          {t('errorMessage')}: <span>{`${errorType}`}</span>
           <button
             type="button"
             className="close"

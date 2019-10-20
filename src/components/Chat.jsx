@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import connect from '../../decorators/connect';
-import withTranslate from '../../decorators/translation';
-import withReduxForm from '../../decorators/reduxForm';
-import userNameContext from '../../usernameContext';
+import connect from '../decorators/connect';
+import withTranslate from '../decorators/translation';
+import withReduxForm from '../decorators/reduxForm';
+import userNameContext from '../usernameContext';
 
 const mapStateToProps = (state) => {
   const { messages, currentChannelId } = state;

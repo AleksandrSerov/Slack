@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Modal, Button, Form } from 'react-bootstrap';
-import connect from '../../../decorators/connect';
-import withTranslation from '../../../decorators/translation';
-import withReduxForm from '../../../decorators/reduxForm';
+import connect from '../../decorators/connect';
+import withTranslation from '../../decorators/translation';
+import withReduxForm from '../../decorators/reduxForm';
 
 const RemoveChannelButton = ({ meta: { submitting }, t }) => (
   <Button type="submit" disabled={submitting}>
