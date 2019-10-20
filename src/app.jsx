@@ -13,7 +13,6 @@ import io from 'socket.io-client';
 import gon from 'gon';
 import faker from 'faker/locale/en';
 import rootReducer from './reducers';
-import UsernameContext from './usernameContext';
 import convertInitialState from './helpers';
 import actionCreators from './actions';
 import App from './components/App';
@@ -27,6 +26,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 
 const initialState = convertInitialState(gon);
 const username = Cookies.get('username') || faker.name.findName();
+const UsernameContext = React.createContext({});
 
 if (!Cookies.get('username')) {
   Cookies.set('username', username);

@@ -4,14 +4,11 @@ import { Button, Form, InputGroup } from 'react-bootstrap';
 import connect from '../../../../../decorators/connect';
 import withTranslate from '../../../../../decorators/translation';
 import withReduxForm from '../../../../../decorators/reduxForm';
-import usernameContext from '../../../../../usernameContext';
 
 @connect()
 @withReduxForm('chatMessageForm')
 @withTranslate()
 class ChatMessageForm extends Component {
-  static contextType = usernameContext;
-
   handleSendMessage = async (data) => {
     const { actions, reset } = this.props;
     const { text } = data;
