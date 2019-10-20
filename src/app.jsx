@@ -18,7 +18,7 @@ import convertInitialState from './helpers';
 import actionCreators from './actions';
 import App from './components/App';
 
-import './components/App/i18n';
+import './i18n';
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
