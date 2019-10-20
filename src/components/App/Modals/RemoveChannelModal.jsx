@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { Modal, Button, Form } from 'react-bootstrap';
-import connect from '../../../../decorators/connect';
-import withTranslation from '../../../../decorators/translation';
-import withReduxForm from '../../../../decorators/reduxForm';
-import RemoveChannelButton from './RemoveChannelButton';
+import connect from '../../../decorators/connect';
+import withTranslation from '../../../decorators/translation';
+import withReduxForm from '../../../decorators/reduxForm';
 
+const RemoveChannelButton = ({ meta: { submitting }, t }) => (
+  <Button type="submit" disabled={submitting}>
+    {submitting ? t('removing') : t('remove')}
+  </Button>
+);
 const mapStatetoProps = (state) => {
   const props = {
     isShowModal: state.modals.removeChannel.isShow,
@@ -50,7 +54,11 @@ class RemoveChannelModal extends Component {
             id="removeChannel"
             onSubmit={handleSubmit(this.handleRemoveChannel)}
           >
-            <Field name="submit" component={RemoveChannelButton} />
+            <Field
+              name="submit"
+              component={RemoveChannelButton}
+              props={{ t }}
+            />
           </Form>
         </Modal.Footer>
       </Modal>

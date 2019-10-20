@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { ListGroup, InputGroup, Button, Form } from 'react-bootstrap';
 import { Field } from 'redux-form';
-import connect from '../../../decorators/connect';
-import withReduxForm from '../../../decorators/reduxForm';
-import withTranslation from '../../../decorators/translation';
+import connect from '../../decorators/connect';
+import withReduxForm from '../../decorators/reduxForm';
+import withTranslation from '../../decorators/translation';
 
 const mapStateToProps = (state) => ({
   channels: state.channels.allIds.map((id) => state.channels.byId[id]),
