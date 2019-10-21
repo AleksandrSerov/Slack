@@ -24,7 +24,9 @@ class ErrorModal extends Component {
     return (
       isShow && (
         <Alert variant="danger" className="fixed-bottom">
-          {t('errorMessage')}: <span>{`${errorType}`}</span>
+          {t('errorMessage')}
+          : 
+          <span>{`${errorType}`}</span>
           <button
             type="button"
             className="close"
