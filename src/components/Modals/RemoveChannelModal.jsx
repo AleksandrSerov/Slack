@@ -26,6 +26,7 @@ class RemoveChannelModal extends Component {
     try {
       await actions.removeChannel({ id: removingChannelId });
     } catch (error) {
+      actions.removeChannelFailure();
       throw new Error('Error while removing channel', error);
     }
     actions.clearRemovingChannelId();

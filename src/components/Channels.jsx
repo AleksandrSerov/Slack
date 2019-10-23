@@ -19,6 +19,7 @@ class Channels extends Component {
     try {
       await actions.createChannel({ name: String(name) });
     } catch (error) {
+      actions.createChannelFailure();
       throw new Error('Error while creating channel', error);
     }
     reset();

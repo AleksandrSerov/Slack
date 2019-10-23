@@ -4,7 +4,6 @@ import routes from '../../routes';
 
 export const sendMessage = (data) => async (dispatch, getState) => {
   const { currentChannelId } = getState();
-  dispatch(actions.sendMessageRequest());
   try {
     await axios.post(routes.channelMessagesPath(currentChannelId), {
       data: {
@@ -13,14 +12,12 @@ export const sendMessage = (data) => async (dispatch, getState) => {
     });
     dispatch(actions.sendMessageSuccess());
   } catch (error) {
-    dispatch(actions.sendMessageFailure());
-    throw error;
+    throw new Error('Error while sending message', error);
   }
 };
 
 export const createChannel = (data) => async (dispatch) => {
   const { name } = data;
-  dispatch(actions.createChannelRequest());
   try {
     await axios.post(routes.channelPath(), {
       data: {
@@ -31,14 +28,12 @@ export const createChannel = (data) => async (dispatch) => {
     });
     dispatch(actions.createChannelSuccess());
   } catch (error) {
-    dispatch(actions.createChannelFailure());
     throw new Error('Error while creating channel', error);
   }
 };
 
 export const removeChannel = (data) => async (dispatch) => {
   const { id } = data;
-  dispatch(actions.removeChannelRequest());
   try {
     await axios.delete(routes.channelPath(id), {
       data: {
@@ -49,14 +44,12 @@ export const removeChannel = (data) => async (dispatch) => {
     });
     dispatch(actions.removeChannelSuccess());
   } catch (error) {
-    dispatch(actions.removeChannelFailure());
     throw new Error('Error while removing channel', error);
   }
 };
 
 export const renameChannel = (data) => async (dispatch) => {
   const { id, name } = data;
-  dispatch(actions.renameChannelRequest());
   try {
     await axios.patch(routes.channelPath(id), {
       data: {
@@ -67,7 +60,6 @@ export const renameChannel = (data) => async (dispatch) => {
     });
     dispatch(actions.renameChannelSuccess());
   } catch (error) {
-    dispatch(actions.renameChannelFailure());
     throw new Error('Error renaming removing channel', error);
   }
 };

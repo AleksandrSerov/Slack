@@ -37,6 +37,7 @@ class Chat extends Component {
     try {
       await actions.sendMessage({ text: String(text), username });
     } catch (error) {
+      actions.sendMessageFailure();
       throw new Error('Error while sending message', error);
     }
     reset();

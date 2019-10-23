@@ -9,7 +9,7 @@ module.exports = {
     gon: 'gon',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.jsx', '.js'],
   },
   output: {
     path: `${__dirname}/dist/public`,
