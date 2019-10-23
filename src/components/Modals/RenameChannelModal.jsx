@@ -22,6 +22,7 @@ class RenameChannelModal extends Component {
     try {
       await actions.renameChannel({ id: renameChannelId, name: String(name) });
     } catch (error) {
+      actions.renameChannelFailure();
       throw new Error('Error while renaming channel', error);
     }
     actions.clearRenamingChannelId();
