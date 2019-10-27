@@ -1,4 +1,4 @@
-import app from './index';
+import app from './entry';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/application.css';
