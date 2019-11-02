@@ -6,8 +6,10 @@
 
 ## Description
 
-Simple Slack
+Analogue of Slack chat (very simplified version). Key features of the system:
 
+- Availability and management of channels (deletion, renaming)
+ - Live chat in each channel
 ## Demo
 
 https://hexlet-frontend-project-lvl-4.herokuapp.com/
@@ -15,8 +17,8 @@ https://hexlet-frontend-project-lvl-4.herokuapp.com/
 ## Installation
 
 ```bash
-git clone git@github.com:AleksandrSerov/frontend-project-lvl4.git
-cd frontend-project-lvl4
+git clone git@github.com:AleksandrSerov/Slack.git
+cd Slack
 make install
 ```
 
