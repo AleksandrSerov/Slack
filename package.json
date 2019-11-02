@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:hexlet/frontend_l4_chat_project.git"
+    "url": "git+https://github.com/AleksandrSerov/Slack.git"
   },
   "author": "Aleksandr Serov",
   "license": "ISC",
   "bugs": {
-    "url": "git+https://github.com/AleksandrSerov/frontend-project-lvl4.git"
+    "url": "git+https://github.com/AleksandrSerov/Slack.git/issues"
   },
-  "homepage": "https://github.com/AleksandrSerov/frontend-project-lvl4#readme",
+  "homepage": "https://github.com/AleksandrSerov/Slack#readme",
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
