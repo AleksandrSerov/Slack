@@ -12,7 +12,7 @@ Analogue of Slack chat (very simplified version). Key features of the system:
  - Live chat in each channel
 ## Demo
 
-https://hexlet-frontend-project-lvl-4.herokuapp.com/
+https://slack-s-project.herokuapp.com/
 
 ## Installation
 
