@@ -15,7 +15,7 @@ const mapStatetoProps = (state) => {
 @connect(mapStatetoProps)
 @withReduxForm('renameChannelForm')
 @withTranslation()
-class RenameChannelModal extends Component {
+class RenameChannelModal extends Component<any> {
   handleRenameChannel = async (data) => {
     const { actions, renameChannelId, reset } = this.props;
     const { name } = data;
@@ -23,7 +23,7 @@ class RenameChannelModal extends Component {
       await actions.renameChannel({ id: renameChannelId, name: String(name) });
     } catch (error) {
       actions.renameChannelFailure();
-      throw new Error('Error while renaming channel', error);
+      throw new Error(`Error while renaming channel, ${error}`);
     }
     actions.clearRenamingChannelId();
     reset();

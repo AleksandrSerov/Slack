@@ -20,14 +20,14 @@ const mapStatetoProps = (state) => {
 @connect(mapStatetoProps)
 @withReduxForm('removeChannelForm')
 @withTranslation()
-class RemoveChannelModal extends Component {
+class RemoveChannelModal extends Component<any> {
   handleRemoveChannel = async () => {
     const { actions, removingChannelId } = this.props;
     try {
       await actions.removeChannel({ id: removingChannelId });
     } catch (error) {
       actions.removeChannelFailure();
-      throw new Error('Error while removing channel', error);
+      throw new Error(`Error while removing channel, ${error}`);
     }
     actions.clearRemovingChannelId();
   };

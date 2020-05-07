@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "outDir": "./dist",
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "module": "es6",
+        "jsx": "react",
+        "target": "es5",
+        "allowJs": true,
+        "lib": ["es2018", "dom"],
+        "moduleResolution": "node",
+        "typeRoots": [ "src/types", "./node_modules/@types"]
+
+    },
+    "include": [
+        "./src"
+    ]
+}

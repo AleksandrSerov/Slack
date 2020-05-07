@@ -12,7 +12,7 @@ export const sendMessage = (data) => async (dispatch, getState) => {
     });
     dispatch(actions.sendMessageSuccess());
   } catch (error) {
-    throw new Error('Error while sending message', error);
+    throw new Error(`Error while sending message ${error}`);
   }
 };
 
@@ -28,7 +28,7 @@ export const createChannel = (data) => async (dispatch) => {
     });
     dispatch(actions.createChannelSuccess());
   } catch (error) {
-    throw new Error('Error while creating channel', error);
+    throw new Error(`Error while creating channel ${error}`);
   }
 };
 
@@ -44,7 +44,7 @@ export const removeChannel = (data) => async (dispatch) => {
     });
     dispatch(actions.removeChannelSuccess());
   } catch (error) {
-    throw new Error('Error while removing channel', error);
+    throw new Error(`Error while removing channel ${error}`);
   }
 };
 
@@ -60,6 +60,6 @@ export const renameChannel = (data) => async (dispatch) => {
     });
     dispatch(actions.renameChannelSuccess());
   } catch (error) {
-    throw new Error('Error renaming removing channel', error);
+    throw new Error(`Error renaming removing channel ${error}`);
   }
 };

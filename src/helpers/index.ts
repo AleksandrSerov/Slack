@@ -1,6 +1,7 @@
 import { keyBy } from 'lodash';
+import { StateType } from '../entry';
 
-export default (state) => {
+export default (state: any): StateType => {
   const { currentChannelId } = state;
   const messages = {
     allIds: state.messages.map(({ id }) => id),
@@ -16,5 +17,19 @@ export default (state) => {
     messages,
     channels,
     currentChannelId,
+    form: {},
+    modals: {
+      errorModal: {
+        isShow: false
+      },
+      removeChannel: {
+        isShow: false
+      },
+      renameChannel: {
+        isShow: false
+      }
+    },
+    removingChannelId: null,
+    renamingChannelId: null,
   };
 };
