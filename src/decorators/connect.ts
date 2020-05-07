@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import actions from '../actions';
+import { StateType } from '../entry';
 
-export default (mapStateToProps = () => ({})) => (Component) =>
+type MapStateToPropsType = (state: StateType) => any
+export default (mapStateToProps: MapStateToPropsType = () => ({})) => (Component) =>
   connect(
     mapStateToProps,
     (dispatch) => ({

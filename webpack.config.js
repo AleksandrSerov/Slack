@@ -4,12 +4,12 @@ const isAnalyse = process.argv.includes('--analyse');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
-  entry: ['babel-polyfill', `${__dirname}/src/index.js`],
+  entry: [`${__dirname}/src/index.ts`],
   externals: {
     gon: 'gon',
   },
   resolve: {
-    extensions: ['.jsx', '.js'],
+    extensions: ['.ts', '.tsx', '.jsx', '.js'],
   },
   output: {
     path: `${__dirname}/dist/public`,
@@ -18,9 +18,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: 'ts-loader',
       },
       {
         test: /\.css$/,

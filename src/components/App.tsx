@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import RemoveChannelModal from './Modals/RemoveChannelModal';
 import RenameChannelModal from './Modals/RenameChannelModal';
 import ErrorModal from './Modals/ErrorModal';
-import Channels from './Channels';
+import Channels from './Channels/Channels';
 import Chat from './Chat';
 
 const App = () => (

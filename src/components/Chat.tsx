@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 @connect(mapStateToProps)
 @withReduxForm('chatMessageForm')
 @withTranslate()
-class Chat extends Component {
+class Chat extends Component<any> {
   static contextType = userNameContext;
 
   renderMessages = () => {
@@ -38,7 +38,7 @@ class Chat extends Component {
       await actions.sendMessage({ text: String(text), username });
     } catch (error) {
       actions.sendMessageFailure();
-      throw new Error('Error while sending message', error);
+      throw new Error(`Error while sending message ${error}`);
     }
     reset();
   };
